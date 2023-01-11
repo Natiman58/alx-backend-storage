@@ -1,4 +1,5 @@
 -- create a table called users
+-- in the database holberton
 
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT,
@@ -6,3 +7,4 @@ CREATE TABLE IF NOT EXISTS users (
     name CHAR(255),
     PRIMARY KEY (id)
 );
+
