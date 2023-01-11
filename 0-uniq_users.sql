@@ -5,4 +5,3 @@ CREATE TABLE IF NOT EXISTS users (
     email CHAR(255) NOT NULL UNIQUE,
     name CHAR(255)
 );
-
