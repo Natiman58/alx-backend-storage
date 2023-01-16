@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
     A python function that lists all docs in a collection
 """
@@ -12,3 +14,4 @@ def list_all(mongo_collection):
         return []
     col_list = list(mongo_collection.find())
     return col_list
+
