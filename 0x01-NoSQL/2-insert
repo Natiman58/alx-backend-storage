@@ -1,5 +1,4 @@
-// A script to insert a document into the collection 'school'and the document must have one attribute 'name' with value “Holberton school”
-
+// A script to insert a document 'name' into the collection 'school'
 db.school.insertOne(
    {
 	name: "Holberton school"
