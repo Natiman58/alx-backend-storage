@@ -5,7 +5,10 @@ import pymongo
 
 
 def list_all(mongo_collection):
-    if mongo_collection == None:
+    """
+        List all collections in mongodb DB
+    """
+    if mongo_collection is None:
         return []
     col_list = list(mongo_collection.find())
     return col_list
