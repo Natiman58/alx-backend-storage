@@ -12,4 +12,3 @@ def list_all(mongo_collection):
         return []
     col_list = list(mongo_collection.find())
     return col_list
-
