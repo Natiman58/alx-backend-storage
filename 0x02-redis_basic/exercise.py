@@ -9,6 +9,28 @@ import uuid
 import redis
 
 
+def call_history(method: Callable) -> Callable:
+    """ A decorator to store the history of inputs
+        and outputs for a particular function
+    """
+    method_key = method.__qualname__
+    input_keys = method_key + ":inputs"
+    output_keys = method_key + ":outputs"
+
+    @wraps(method)
+    def wrapper(self, *args, **kwds):
+        """
+            adds the inputs keys to the input list
+            and out put to the output list
+            the return the output
+        """
+        self._redis.rpush(input_keys, str(args))
+        self._redis.rpush(output_keys, str(args))
+
+        return method(self, *args, **kwds)
+    return wrapper
+
+
 def count_calls(method: Callable) -> Callable:
     """
         A decorator function that
@@ -38,6 +60,7 @@ class Cache:
         self._redis = redis.Redis()  # create & store the redis client
         self._redis.flushdb()  # Delete all keys in the current db
 
+    @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
