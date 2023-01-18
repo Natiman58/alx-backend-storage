@@ -25,7 +25,7 @@ class Cache:
             A method that stores the data into redis as key val pairs
             returns the string format of the key used to set the data
         """
-        key = int(uuid.uuid4())
+        key = str(uuid.uuid4())
         self._redis.set(key, data)
 
         return key
