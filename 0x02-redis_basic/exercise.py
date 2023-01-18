@@ -60,8 +60,8 @@ class Cache:
         self._redis = redis.Redis()  # create & store the redis client
         self._redis.flushdb()  # Delete all keys in the current db
 
-    @call_history
     @count_calls
+    @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
             A method that stores the data into redis cache using key
