@@ -4,12 +4,12 @@
     reddis always returns byte string data type
 """
 from functools import wraps
-from typing import Optional, Union
+from typing import Callable, Optional, Union
 import uuid
 import redis
 
 
-def count_calls(method: callable) -> callable:
+def count_calls(method: Callable) -> Callable:
     """
         A decorator function that
         creates and returns a function that increments the count
@@ -50,7 +50,7 @@ class Cache:
         return key
 
     def get(self, key: str,
-            fn: Optional[callable] = None
+            fn: Optional[Callable] = None
             ) -> Union[str, bytes, int, float]:
         """
             A method to get data from redis cache
