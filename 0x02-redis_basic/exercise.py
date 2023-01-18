@@ -55,5 +55,3 @@ class Cache:
             returns the int form of the returned byte form data from redis
         """
         return int(rr_data)
-
-
