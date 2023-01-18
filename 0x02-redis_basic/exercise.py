@@ -15,7 +15,7 @@ def replay(method: Callable) -> None:
     """
     method_key = method.__qualname__
     cache = redis.Redis()
-    calls = cache.get(method_key).decode("utf-8", "strict")
+    calls = cache.get(method_key).decode("utf-8")
 
     print("{} was called {} times:".format(method_key, calls))
 
@@ -23,7 +23,9 @@ def replay(method: Callable) -> None:
     outputs = cache.lrange(method_key + ":outputs", 0, -1)
 
     for i, j in zip(inputs, outputs):
-        print("{}(*{}) -> {}".format(method_key, i.decode('utf-8'), j.decode('utf-8')))
+        print("{}(*{}) -> {}".format(method_key, i.decode('utf-8'),
+                                     j.decode('utf-8')))
+
 
 def call_history(method: Callable) -> Callable:
     """ A decorator to store the history of inputs
