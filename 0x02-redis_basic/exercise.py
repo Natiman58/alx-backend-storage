@@ -23,7 +23,7 @@ class Cache:
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
             A method that stores the data into redis as key val pairs
-            returns the string format of data
+            returns the string format of the key used to set the data
         """
         key = str(uuid.uuid4())
         self._redis.set(key, data)
