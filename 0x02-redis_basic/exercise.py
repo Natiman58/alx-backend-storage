@@ -17,7 +17,7 @@ class Cache:
             as a private variable; _redis
             and flush all the instances
         """
-        self._redis = redis.Redis()  # store the redis client in _redis
+        self._redis = redis.Redis()  # create and store the redis client in _redis
         self._redis.flushdb()  # Delete all keys in the current db
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
