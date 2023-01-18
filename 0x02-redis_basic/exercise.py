@@ -2,7 +2,7 @@
 """
     A redis module that writes strings to reddis
 """
-import string
+from typing import Union
 import uuid
 import redis
 
@@ -20,7 +20,7 @@ class Cache:
         self._redis = redis.Redis()  # store the redis client in _redis
         self._redis.flushdb  # Delete all key value pairs in the current db
 
-    def store(self, data: any) -> string:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """
             A method that returns the string format of data
         """
