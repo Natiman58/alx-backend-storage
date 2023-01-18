@@ -45,7 +45,7 @@ class Cache:
             returns the string format of the key used to set the data
         """
         key = str(uuid.uuid4())
-        self._redis.set(key, data)
+        self._redis.mset(key, data)
 
         return key
 
